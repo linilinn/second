@@ -9,13 +9,14 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.util.Log;
 import android.view.View;
-
+import com.example.second.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "First Activity";
-
+    private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         setContentView(R.layout.activity_main);
         Button button = (Button) findViewById(R.id.button); //кнопка Далее
         button.setText(R.string.next);
@@ -32,6 +33,21 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(TAG, "Button clicked");
+            }
+        });
+         */
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.button.setText(R.string.next);
+        binding.editTextTextPersonName.setText(R.string.user_name);
+        binding.textView.setText(R.string.app_name);
+        binding.textView2.setText(R.string.app_for);
+        binding.textView3.setText(R.string.start_screen);
+        binding.imageView3.setImageResource(R.drawable.start_food);
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Log.i(TAG, "Button clicked");
             }
         });

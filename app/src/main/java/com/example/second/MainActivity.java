@@ -29,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
         usernameTextView.setText(R.string.start_screen);
         ImageView myImage = (ImageView) findViewById(R.id.imageView3); //картинка еды на стартовом экране
         myImage.setImageResource(R.drawable.start_food);
-
-    }
-
-    public void onClick(View v) {
-        Log.i(TAG, "Button clicked");
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Button clicked");
+            }
+        });
     }
 }

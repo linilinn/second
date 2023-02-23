@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_red"
+    android:onClick="@string/clicked"
     tools:context=".MainActivity">
 
     <ImageView
@@ -25,6 +26,7 @@
         android:layout_height="@dimen/button_height"
         android:backgroundTint="@color/red"
         android:fontFamily="@font/space_grotesk_light"
+        android:onClick="@string/clicked"
         android:text="@string/next"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -62,13 +64,13 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_centerHorizontal="@id/textView"
             android:fontFamily="@font/space_grotesk_light"
             android:gravity="center"
             android:text="@string/app_for"
             android:textColor="#B7FFFFFF"
-            android:textSize="20sp"
-            android:layout_below="@id/textView"
-            android:layout_centerHorizontal="@id/textView"/>
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

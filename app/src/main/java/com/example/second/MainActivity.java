@@ -7,8 +7,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
+import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "First Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +29,10 @@ public class MainActivity extends AppCompatActivity {
         usernameTextView.setText(R.string.start_screen);
         ImageView myImage = (ImageView) findViewById(R.id.imageView3); //картинка еды на стартовом экране
         myImage.setImageResource(R.drawable.start_food);
+
+    }
+
+    public void onClick(View v) {
+        Log.i(TAG, "Button clicked");
     }
 }

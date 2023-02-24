@@ -1,7 +1,14 @@
 package com.example.second;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -9,14 +16,18 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.second.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "First Activity";
     private ActivityMainBinding binding;
+    Context context = MainActivity.this;
+    int REQUEST_CODE = 1;
+    int time = Toast.LENGTH_LONG; //длительность всплывающего окна
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
         setContentView(R.layout.activity_main);
         Button button = (Button) findViewById(R.id.button); //кнопка Далее
         button.setText(R.string.next);
@@ -33,10 +44,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "Button clicked");
+                Intent intent = new Intent(context, SecondActivity.class);
+                EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
+                String name = editText.getText().toString();
+                intent.putExtra("name", name);
+                startActivityForResult(intent, 1);
             }
         });
-         */
+
+        /*
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.button.setText(R.string.next);
@@ -51,5 +67,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "Button clicked");
             }
         });
+        */
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            String resultText = data.getStringExtra("resultText");
+            Toast.makeText(context, resultText + ", приложение пока не готово", time).show();
+        }
     }
 }
